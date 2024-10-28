@@ -7,16 +7,13 @@ A WORK IN PROGRESS, port of some of Sparsebox's features to python
 
 wip
 
-Add your gestalt file into the Sparsedows folder.
-
-python main.py
-
 # THIS IS WIP
 Only become iPadOS partially works right now (will only patch the gestalt, will NOT however actually restore it onto your device)
 
 # Requirements
 
 pymobiledevice3
+Your gestalt file
 
 # Credits:
 
