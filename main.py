@@ -139,7 +139,6 @@ def revertChanges():
 @click.command(cls=Command)
 @click.pass_context
 def cli(ctx, service_provider: LockdownClient) -> None:
-    sys.exit() # fiwoepewfipoewfipewfiopewfipoewifopewifpoewifopweifopweifpoweifpowifpoewifpoewifpoewipfoiefpoeiwfopewifopeifpowieopfewipfoewipofiwepofipoweifpoweifopweoip
 
     usrVersion = parse_version(service_provider.product_version)
 
