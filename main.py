@@ -4,9 +4,12 @@ import plistlib
 import click
 import traceback
 
+from packaging.version import parse as parse_version
 from pymobiledevice3.cli.cli_common import Command
 from pymobiledevice3.exceptions import NoDeviceConnectedError, PyMobileDevice3Exception
 from pymobiledevice3.lockdown import LockdownClient
+from pymobiledevice3.services.diagnostics import DiagnosticsService
+from pymobiledevice3.services.installation_proxy import InstallationProxyService
 
 from sparserestore import backup, perform_restore
 
@@ -136,6 +139,40 @@ def revertChanges():
 @click.command(cls=Command)
 @click.pass_context
 def cli(ctx, service_provider: LockdownClient) -> None:
-    print("hi!")
+    sys.exit() # fiwoepewfipoewfipewfiopewfipoewifopewifpoewifopweifopweifpoweifpowifpoewifpoewifpoewipfoiefpoeiwfopewifopeifpowieopfewipfoewipofiwepofipoweifpoweifopweoip
+
+    usrVersion = parse_version(service_provider.product_version)
+
+    if usrVersion > 17.7 and usrVersion < 18.0:
+        print("It seems like you are running a unsupported version. While the script can continue, it will most likely not work.")
+        input("Press enter to continue: ")
+    if usrVersion == 18.1:
+        print("You may be running a unsupported version, the script may continue, but it might not work.")
+        input("Press enter to continue: ")
+    if usrVersion > 18.1:
+        print("It seems like you are running a unsupported version. While the script can continue, it will most likely not work.")
+        input("Press enter to continue: ")
+
+    restore = backup.Backup( 
+        files = [
+            backup.Directory(
+                "",
+                 f"SysContainerDomain-../../../../../../../../var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches",
+                owner=33,
+                group=33
+            ),
+            backup.ConcreteFile(
+                "",
+                f"SysContainerDomain-../../../../../../../../var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist",
+                owner=33,
+                group=33,
+                contents=open("com.apple.MobileGestalt.plist", "r").read(),
+            ),
+        ]
+    )
+
+    perform_restore(restore, reboot=False)
+
+    print("Restore complete! Make SURE TO ENABLE FIND MY AGAIN before restarting your phone.")
 
 main()
