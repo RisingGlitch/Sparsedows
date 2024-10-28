@@ -5,8 +5,7 @@ A WORK IN PROGRESS, port of some of Sparsebox's features to python
 
 # How to use:
 
-git pull https://github.com/RisingGlitch/Sparsedows.git
-cd Sparsedows
+wip
 
 Add your gestalt file into the Sparsedows folder.
 
