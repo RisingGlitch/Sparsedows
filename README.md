@@ -1,7 +1,7 @@
 # Sparsedows
 A WORK IN PROGRESS, port of some of Sparsebox's features to python
 
-Please don't run this right now, there is a very likely chance it will bootloop you.
+# PLEASE dont run this right now, there is a very likely chance it will bootloop you.
 
 # How to use:
 
